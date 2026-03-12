@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Register</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/register.css' %}"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <script src="https://kit.fontawesome.com/c0079a392f.js" crossorigin="anonymous"></script>
+ 
+    </head>
+        <style>
+           
+            @media only screen and (max-width: 700px) {
+              form{
+                width:fit-content;
+            }           
+}
+
+        </style>
+    <body>
+            <!-- <div class="container"> -->
+                <form  method="POST" action="{% url 'register' %}">
+          {% csrf_token %}
+                    <h1><span>Re</span>gistration   <i style="font-size: 35px; color: olive;" class="fa-brands fa-earlybirds"></i> </h1>
+                    <div class="boxes">
+                            <div class="label">
+                                <label>First Name</label><br>
+                                <input placeholder="Enter your name" type="text" name="firstname"/>
+                            </div>
+                            <div class="label">
+                                <label for="">Last Name</label><br>
+                                <input type="text" name="lastname"  placeholder="Enter your Username"/>
+
+                            </div>
+                        </div>
+                    <div class="boxes">
+                            <div class="label">
+                                    <label for="">User Name</label><br>
+                                    <input type="text" placeholder="Enter your email" name="username"/>
+                            </div>
+
+                            <div class="label label-2">
+                                        <label for="">Email</label><br>
+                                        <input type="email" name="email" placeholder="Enter your phonenumber"/>
+                            </div>
+
+                        </div>
+
+                        <div class="label">
+                         <label class="gen ">Passsword</label><br>
+                         <input name="password" placeholder="password" class="gen" type="password"/> 
+                         </div>
+                                <br>
+                         <button type="submit"><b>Registered</b></button>
+
+                         <P class="foot">Do you have Account ?<a href="/login" class="register">Sign in</a></P>
+                         {% if error %}
+                         <div style="visibility: hidden;" id="error">{{error}}</div>
+                         {% endif %}
+
+            </form>
+
+
+            <script type="text/javascript">
+                 window.onload = function() {
+                    var error = document.getElementById("error")
+                    if (error){
+                    alert(error.textContent)
+                    }
+                 }
+            </script>
+    </body>
+</html>

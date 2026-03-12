@@ -1,0 +1,123 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet", type="text/css" href="{% static 'css/store.css' %}"/> -->
+
+    <title>store</title>
+</head>
+<style>
+    h4 {
+        float: right;
+    }
+
+    @media (max-width: 600px) {
+        .row {
+            display: flex;
+            flex-direction: column;
+            /* Stack items vertically */
+            align-items: center;
+            /* Center them horizontally */
+        }
+
+        .col-lg-4 {
+            width: 100%;
+            /* Take full width on small screens */
+            margin-top: 20px;
+            /* Add spacing between stacked items */
+        }
+
+        .thumbnail {
+            max-width: 100%;
+            /* Prevent image from overflowing */
+            height: auto;
+            /* Keep aspect ratio */
+        }
+
+        .box-element {
+            text-align: left;
+            /* Center text and buttons */
+        }
+
+        .btn {
+            width: 50%;
+            /* Buttons stretch full width */
+            margin-top: 10px;
+        }
+    }
+        .igm img{
+            width: 100%;
+            height: 300px;
+        }
+</style>
+
+<body>
+
+       <div class="igm"><img src="{% static 'images/E-Commerce-advets.jpg' %}" alt=""></div>
+
+    <div class="row">
+        {% for product in products %}
+        <div class="col-lg-4 mt-5">
+            <img class="thumbnail  img-fluid " src="{{product.imageURL}}" alt="">
+            <div class="box-element product">
+                <h6><strong>{{product.Name}}</strong></h6>
+                <hr>
+                <button id="storebtn" data-product="{{product.id}}" data-action="add"
+                    class="btn btn-outline-secondary add-btn update-cart">Add to cart</button>
+                <!-- <a class="btn btn-outline-success" href="">views <span style="display: none;">{{product.id}}</span></a> -->
+                <h4 style="display:inline-block; font-size: 18px; margin-top: 8px;">&#x20B9; {{product.price|floatformat:2}}</h4>
+            </div>
+        </div>
+
+
+        {% endfor %}
+    </div>
+
+
+
+
+    {% if custom %}
+    <div id="custom" style="display: none;">{{custom}}</div>
+    {% endif %}
+
+
+    <script type="text/javascript">
+
+        var storebtn = document.getElementsByClassName('add-btn')
+
+
+        var custom = document.getElementById("custom").innerText
+        console.log(custom)
+        // btns = "button cicked"
+
+        for (var i = 0; i < storebtn.length; i++) {
+            storebtn[i].addEventListener('click', function () {
+
+
+                var btns = "button cicked"
+                console.log('the adddevent button')
+                if (custom == 'not' && btns == "button cicked") {
+                    // console.log('the adddevent button 656987')
+                    alert('you not login yet')
+                }
+            })
+        }
+
+
+
+    </script>
+
+</body>
+
+
+
+</html>
+{% include 'footer.html' %}
+{% endblock content %}

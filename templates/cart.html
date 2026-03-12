@@ -1,0 +1,142 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" rel="stylesheet">
+
+
+
+    <!-- <link rel="stylesheet", type="text/css" href="{% static 'css/cart.css' %}"/> -->
+    <title>cart</title>
+</head>
+<style>
+    @media (max-width: 600px) {
+
+        .table th,
+        .table td {
+            display: block;
+            /* Stack table cells vertically */
+            width: 100%;
+            /* Full width for readability */
+            text-align: center;
+            /* Center align text */
+        }
+
+        .cart-row {
+            display: flex;
+            flex-direction: column;
+            /* Stack each cart item vertically */
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+
+        .cart-row div {
+            flex: unset;
+            /* Remove fixed flex ratios */
+            width: 100%;
+            /* Each section takes full width */
+            text-align: center;
+            margin: 5px 0;
+        }
+
+        .row-image {
+            max-width: 80%;
+            /* Prevent image overflow */
+            height: auto;
+        }
+
+        .btn {
+            width: 100%;
+            /* Buttons stretch full width */
+            margin-top: 10px;
+        }
+        .update-cart{
+           margin: auto;
+           margin-top: 10px;
+        }
+    }
+</style>
+
+<body>
+
+    <div class="row" style="">
+        <div class="col-lg-12">
+            <div class="box-element">
+                <a class="btn btn-outline-dark" href="{% url 'store' %}">&#x2190;continue shopping</a>
+
+                <br>
+                <br>
+
+                <table class="table">
+                    <tr>
+                        <th>
+                            <h5>Items: <strong>{{order.get_cart_item}}</strong></h5>
+                        </th>
+                        <th>
+                            <h5>Total<strong>&#x20B9; {{order.get_cart_total}}</strong></h5>
+                        </th>
+                        <th>
+                            <a style="float: right; margin: 5px;" class="btn btn-success"
+                                href="{% url 'checkout' %}">checkout</a>
+                        </th>
+                    </tr>
+                </table>
+            </div>
+
+            <br>
+
+            <div class="box-element">
+                <div class="cart-row">
+                    <div style="flex: 2;"></div>
+                    <div style="flex: 2;"><strong>Item</strong></div>
+                    <div style="flex: 1;"><strong>Price</strong></div>
+                    <div style="flex: 1;"><strong>Quantity</strong></div>
+                    <div style="flex: 1;"><strong>Total</strong></div>
+                    <div style="flex: 1;"></div>
+
+                </div>
+
+                {% for item in items %}
+                <div class="cart-row">
+                    <div style="flex: 2;"><img class="row-image" src="{{item.Product.imageURL}}" alt="">
+                    </div>
+                    <div style="flex: 2;">
+                        <p>{{item.Product.Name}}</p>
+                    </div>
+                    <div style="flex: 1;">&#x20B9; {{item.Product.price|floatformat:2}}</div>
+                    <div style="flex: 1;">
+                        <p class="quantity">{{item.quantity}}</p>
+                        <div class="quantity">
+                            <img data-Product={{item.Product.id}} data-action="add" class="chg-quantity update-cart"
+                                src="{% static  'images/arrow-up.png' %}">
+
+                            <img data-product={{item.Product.id}} data-action="remove" class="chg-quantity update-cart"
+                                src="{% static  'images/arrow-down.png' %}">
+                        </div>
+                    </div>
+                    <div style="flex: 1;">&#x20B9; {{item.get_total}}</div>
+
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+
+    </div>
+
+
+    {% endblock content %}
+
+</body>
+
+</html>

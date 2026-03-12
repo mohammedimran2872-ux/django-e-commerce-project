@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Footer</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background-color: #222;
+      color: #ccc;
+      padding-top: 50px;
+    }
+
+    /* Newsletter */
+    .footer-newsletter {
+      background-color: #e74c3c;
+      padding: 30px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-newsletter h3 {
+      color: #fff;
+      font-size: 1.3rem;
+    }
+
+    .footer-newsletter p {
+      color: #fdd;
+      font-size: 0.9rem;
+      margin-top: 4px;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 0;
+    }
+
+    .newsletter-form input {
+      padding: 12px 18px;
+      width: 280px;
+      border: none;
+      outline: none;
+      font-size: 0.9rem;
+      border-radius: 4px 0 0 4px;
+    }
+
+    .newsletter-form button {
+      padding: 12px 22px;
+      background: #111;
+      color: #fff;
+      border: none;
+      font-size: 0.9rem;
+      cursor: pointer;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .newsletter-form button:hover {
+      background: #333;
+    }
+
+    /* Main Footer Content */
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      padding: 50px 60px;
+      justify-content: space-between;
+    }
+
+    /* Brand Column */
+    .footer-brand {
+      max-width: 250px;
+    }
+
+    .footer-brand .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #fff;
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .footer-brand .logo span {
+      color: #e74c3c;
+    }
+
+    .footer-brand p {
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: #aaa;
+      margin-bottom: 20px;
+    }
+
+    /* Social Icons */
+    .social-icons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .social-icons a {
+      display: inline-block;
+      width: 36px;
+      height: 36px;
+      background: #333;
+      color: #ccc;
+      text-align: center;
+      line-height: 36px;
+      text-decoration: none;
+      font-size: 0.85rem;
+      border-radius: 4px;
+      transition: background 0.3s;
+    }
+
+    .social-icons a:hover {
+      background: #e74c3c;
+      color: #fff;
+    }
+
+    /* Footer Columns */
+    .footer-col h4 {
+      color: #fff;
+      font-size: 1rem;
+      font-weight: bold;
+      margin-bottom: 18px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #e74c3c;
+      display: inline-block;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer-col ul li a {
+      color: #aaa;
+      text-decoration: none;
+      font-size: 0.88rem;
+      transition: color 0.2s;
+    }
+
+    .footer-col ul li a:hover {
+      color: #e74c3c;
+    }
+
+    /* Contact Info */
+    .contact-info li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.88rem;
+      color: #aaa;
+      margin-bottom: 12px;
+    }
+
+    .contact-info li .label {
+      color: #fff;
+      font-weight: bold;
+      min-width: 60px;
+    }
+
+    /* Bottom Bar */
+    .footer-bottom {
+      border-top: 1px solid #333;
+      padding: 20px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .footer-bottom p {
+      font-size: 0.82rem;
+      color: #888;
+    }
+
+    .footer-bottom p span {
+      color: #e74c3c;
+    }
+
+    .footer-bottom-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-bottom-links a {
+      color: #888;
+      font-size: 0.82rem;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-bottom-links a:hover {
+      color: #e74c3c;
+    }
+
+    .payment-methods {
+      display: flex;
+      gap: 8px;
+    }
+
+    .pay-icon {
+      background: #333;
+      color: #ccc;
+      font-size: 0.72rem;
+      font-weight: bold;
+      padding: 5px 10px;
+      border-radius: 3px;
+      letter-spacing: 0.05em;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .footer-newsletter {
+        padding: 24px 24px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .newsletter-form input {
+        width: 200px;
+      }
+
+      .footer-content {
+        padding: 36px 24px;
+        gap: 30px;
+      }
+
+      .footer-bottom {
+        padding: 18px 24px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .newsletter-form {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .newsletter-form input {
+        width: 100%;
+        border-radius: 4px;
+      }
+
+      .newsletter-form button {
+        border-radius: 4px;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<footer>
+
+  
+
+  <!-- Main Content -->
+  <div class="footer-content">
+
+    <!-- Brand -->
+    <div class="footer-brand">
+      <span class="logo"> <i style="font-size: 25px;" class="fa-brands fa-earlybirds"></i>ECOME<span>Zone</span></span>
+      <p>Your one-stop destination for the latest fashion, electronics, home goods, and more. Quality products, great prices.</p>
+      <div class="social-icons">
+        <a href="#">f</a>
+        <a href="#">in</a>
+        <a href="#">tw</a>
+        <a href="#">yt</a>
+      </div>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Shop</a></li>
+        <li><a href="#">New Arrivals</a></li>
+        <li><a href="#">Best Sellers</a></li>
+        <li><a href="#">Sale</a></li>
+      </ul>
+    </div>
+
+    <!-- Customer Service -->
+    <div class="footer-col">
+      <h4>Customer Service</h4>
+      <ul>
+        <li><a href="#">My Account</a></li>
+        <li><a href="#">Track My Order</a></li>
+        <li><a href="#">Returns & Refunds</a></li>
+        <li><a href="#">Shipping Policy</a></li>
+        <li><a href="#">Size Guide</a></li>
+        <li><a href="#">FAQ</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact -->
+    <div class="footer-col">
+      <h4>Contact Us</h4>
+      <ul class="contact-info">
+        <li>
+          <span class="label">Address:</span>
+          <span>123 Market Street,<br>Chennai, TN 600001</span>
+        </li>
+        <li>
+          <span class="label">Phone:</span>
+          <span>+91 98765 43210</span>
+        </li>
+        <li>
+          <span class="label">Email:</span>
+          <span>support@ECOMEzone.com</span>
+        </li>
+        <li>
+          <span class="label">Hours:</span>
+          <span>Mon–Sat: 9am – 6pm</span>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- Bottom Bar -->
+  <div class="footer-bottom">
+    <p>&copy; 2026 <span>ShopZone</span>. All rights reserved.</p>
+    <div class="footer-bottom-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms & Conditions</a>
+      <a href="#">Cookie Policy</a>
+    </div>
+    <div class="payment-methods">
+      <span class="pay-icon">VISA</span>
+      <span class="pay-icon">MC</span>
+      <span class="pay-icon">UPI</span>
+      <span class="pay-icon">PayPal</span>
+      <span class="pay-icon">COD</span>
+    </div>
+  </div>
+
+</footer>
+
+</body>
+</html>

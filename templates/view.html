@@ -1,0 +1,41 @@
+{% extends 'main.html' %}
+
+<!-- <h1>hello{{id}}</h1> -->
+ {% block content %}
+ <html>
+    <style>
+        h4{
+            float: right;
+        }
+    </style>
+    <body>
+      
+       
+            <div class="row">
+         {% for item in view %}
+		<div class="col-lg-4 mt-5">
+            <img class="thumbnail  img-fluid " src="{{item.image.url}}" alt="images">
+			<div class="box-element product">
+                <h6><strong>{{item.name|upper}}</strong></h6>
+                <hr>
+                <button id="storebtn" data-product="{{item.id}}" data-action="add"  class="btn btn-outline-secondary add-btn update-cart">Add to cart</button>
+                   <h4 style="display:inline-block; ">${{item.price|floatformat:2}}</h4>
+			</div>
+		</div>
+
+        {% endfor %} 
+       
+       
+	</div>
+
+             <script type="text/javascript">
+
+           
+
+        
+    </script>
+
+
+    </body>
+{% endblock content %}
+ </html>
